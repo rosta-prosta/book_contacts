@@ -105,8 +105,7 @@ class Main(tk.Frame):
         """Удаление выбранных записей из базы данных и обновление отображения"""
         for selection_items in self.tree.selection():
             self.db.cursor.execute(
-
-                "DELETE FROM db WHERE id=?", (self.tree.set(selection_items, "#1"))
+                "DELETE FROM db WHERE id=?", (self.tree.set(selection_items, "#1"),)
             )
         self.db.conn.commit()
         self.view_records()
